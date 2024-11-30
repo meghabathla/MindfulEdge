@@ -2,6 +2,7 @@ body {
   padding: 0px;
   margin: 0px;
   color: white;
+  font-family: Arial, Helvetica, sans-serif;
   /* font-weight: bold; */
 }
 /* -------Wallpaper styling------ */
@@ -17,11 +18,76 @@ body {
   overflow: hidden;
 }
 /* -------Header styling------ */
-.header {
+
+.header {       
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
+.left_header_content , .right_header_content{
+  cursor: pointer;
+  text-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+  margin: 7px;
+  padding: 7px;
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  font-size: 0.825rem;
+  font-weight: 400;
+  line-height: 1 rem;
+}
+
+.link_section , .focus_section , .focus_today_section , .add_section , .weather_section{
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.3125rem;
+  justify-content: center;
+  align-items: center;
+  vertical-align: top;
+  line-height: 1rem;
+
+}
+.add_section:hover{
+color: white;
+transition: 0.3s;
+}
+.add_section{
+  color: transparent;
+}
+.focus_time , .weather_degree_day{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+/* -------Footer styling------ */
+.footer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px 20px;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+.settings_section , .qoutes_section , .task_section{
+  text-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+  margin: 7px;
+  padding: 10px;
+  font-size: 0.825rem;
+  font-weight: 400;
+}
+
+.settings_section{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+}
+
 
 /* -------Routine styling------ */
 .container {
