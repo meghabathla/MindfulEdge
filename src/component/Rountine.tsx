@@ -12,7 +12,7 @@ const Rountine = () => {
   >([]);
 
   const handleRoutine = (value: string): void => {
-    let trimString = value.trim();
+    const trimString = value.trim();
     if (trimString.length > 0) {
       setRoutine(value);
     }
