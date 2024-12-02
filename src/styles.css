@@ -5,6 +5,13 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   /* font-weight: bold; */
 }
+
+:root {
+  --text-xl: 110px;
+  --text-m: 30px;
+  --text-s: 25px;
+  --text-xs: 30px;
+}
 /* -------Wallpaper styling------ */
 
 .background_img {
@@ -19,50 +26,64 @@ body {
 }
 /* -------Header styling------ */
 
-.header {       
+.header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 }
-.left_header_content , .right_header_content{
+.left_header_content,
+.right_header_content {
   cursor: pointer;
   text-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
-  margin: 7px;
-  padding: 7px;
+  /* margin: 7px; */
+  padding: 14px;
   display: flex;
   flex-direction: row;
+  /* align-items: center; */
+  /* justify-content: center; */
   gap: 15px;
   font-size: 0.825rem;
   font-weight: 400;
   line-height: 1 rem;
 }
 
-.link_section , .focus_section , .focus_today_section , .add_section , .weather_section{
-  display: inline-flex;
+.link_section,
+.focus_section,
+.focus_today_section,
+.add_section,
+.weather_section {
+  display: flex;
   flex-direction: column;
-  gap: 0.3125rem;
-  justify-content: center;
+  gap: 4px;
+  justify-content: space-between;
   align-items: center;
   vertical-align: top;
-  line-height: 1rem;
-
+  /* line-height: 1rem; */
 }
-.add_section:hover{
-color: white;
-transition: 0.3s;
+.add_section:hover {
+  color: white;
+  transition: 0.3s;
 }
-.add_section{
+.add_section {
   color: transparent;
 }
-.focus_time , .weather_degree_day{
+.focus_time,
+.weather_degree_day {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 }
+.icon_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 25px;
+}
 
 /* -------Footer styling------ */
-.footer{
+.footer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -72,7 +93,9 @@ transition: 0.3s;
   width: 100%;
   bottom: 0;
 }
-.settings_section , .qoutes_section , .task_section{
+.settings_section,
+.qoutes_section,
+.task_section {
   text-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
   margin: 7px;
   padding: 10px;
@@ -80,7 +103,7 @@ transition: 0.3s;
   font-weight: 400;
 }
 
-.settings_section{
+.settings_section {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -88,6 +111,32 @@ transition: 0.3s;
   gap: 3px;
 }
 
+/* -------Home styling------ */
+
+.text_large {
+  font-size: var(--text-xl);
+}
+.text_medium {
+  font-size: var(--text-m);
+  padding: 30px 0px;
+}
+.text_small {
+  font-size: var(--text-s);
+}
+.input_goals {
+  display: block;
+  text-align: center;
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid white;
+}
+.home_text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 20px;
+}
 
 /* -------Routine styling------ */
 .container {
