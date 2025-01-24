@@ -1,11 +1,14 @@
 import React from "react";
+import DigitalClock from "./DigitalClock";
+import { GreetMessage } from "./GreetMessage";
 
 const HomeText = () => {
   return (
     <div className="home_text">
-      <div className="text_medium">Good Morning, Megha.</div>
+      <DigitalClock />
+      <GreetMessage />
       <div className="text_small">What is your main goal for today?</div>
-      <div className="input_goals"></div>
+      <input className="input_goals"></input>
     </div>
   );
 };
