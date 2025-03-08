@@ -13,7 +13,7 @@ export const GoalTask: React.FC<GoalProps> = ({
   text,
 }) => {
   return (
-    <div className="goal_task_container">
+    <div className={`goal_task_container `}>
       <input
         className="goal_checkbox"
         type="checkbox"
@@ -21,7 +21,9 @@ export const GoalTask: React.FC<GoalProps> = ({
         onChange={onCheckboxChange}
       />
 
-      <div className="goal_text">{text}</div>
+      <div className={`goal_text ${isChecked ? "checked_goal_task" : ""}`}>
+        {text}
+      </div>
       <div className="goal_options_btn">
         {" "}
         <SlOptions />
