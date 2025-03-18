@@ -1,0 +1,94 @@
+.routine_container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 300px;
+  height: unset;
+  background-color: white;
+  z-index: 2;
+  flex-shrink: 0;
+  border-radius: 10px;
+  color: black;
+  position: fixed;
+  bottom: 48px;
+  right: 16px;
+  padding: 12px;
+  gap: 8px;
+}
+
+.routine_heading {
+  font-size: 20px;
+  text-align: left;
+  display: flex;
+  align-items: flex-start;
+}
+.routine_list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.routine_input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  font-size: 15px;
+}
+.routine_input:focus {
+  outline-width: 0;
+}
+.routine_item {
+  /* padding: 4px 6px; */
+  display: flex;
+  width: 100%;
+  align-items: flex-start;
+  box-sizing: border-box;
+  gap: 6px;
+}
+.checked_routine {
+  text-decoration: line-through;
+}
+.button_submit .button_delete {
+  background-color: transparent;
+  padding: 3px;
+  margin: 2px;
+  border: transparent;
+  border-radius: 0px;
+}
+.button_submit:hover {
+  background-color: rgb(239, 241, 241);
+}
+.routine_item_icon {
+  width: 16px;
+  min-width: 16px;
+  display: flex;
+  align-items: center;
+}
+.routine_task {
+  flex-grow: 1;
+}
+.task_button {
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  color: white;
+}
+.task_ellipis_button {
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: transparent;
+  cursor: pointer;
+  position: relative;
+}
+.task_ellipis_button:hover {
+  color: black;
+  transition: 0.3s;
+  background-color: rgb(231, 231, 231);
+  border-radius: 50%;
+  cursor: pointer;
+}
