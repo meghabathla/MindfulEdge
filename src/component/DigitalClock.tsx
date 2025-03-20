@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const TIME_CONFIG: DateTimeFormatOptions = {
+const TIME_CONFIG = {
   hour: "2-digit",
   minute: "2-digit",
 };
@@ -11,19 +11,24 @@ const getCurrentTime = () => {
     .replace("PM", "");
 };
 
+// export const getGreetMessage = ()=>{
+
+// }
+
 const DigitalClock = () => {
   const [currentTime, setCurrentTime] = useState(getCurrentTime);
 
   const updateTime = () => {
     const time = getCurrentTime();
-
     setCurrentTime(time);
   };
+
   useEffect(() => {
-    const timer = setInterval(updateTime, 1000);
+    const timer = setInterval(updateTime, 1000); // why didn't we call getcurrentTime and setcurrentTime here?
     return () => clearInterval(timer);
   }, []);
-  return <span className="home_text text_large">{currentTime}</span>;
+
+  return <span className=" text_large">{currentTime}</span>;
 };
 
 export default DigitalClock;
