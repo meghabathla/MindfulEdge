@@ -10,7 +10,7 @@ type ListItem = {
 type DropDownProps = {
   list: ListItem[];
 };
-// add cursor pointer in css
+// how do you explain this code to other person? what would be sequence of explaining?
 export const DropDown = ({ list }: DropDownProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const { ref } = useOutsideClick(() => {
