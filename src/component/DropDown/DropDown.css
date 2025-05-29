@@ -3,23 +3,24 @@
   border-radius: 10px;
   width: 100px;
   height: unset;
-  background-color: rgba(190, 190, 190);
+  background-color: #e7e7e7;
   color: rgba(17, 17, 17, 0.8);
   gap: 8px;
   font-size: 13px;
   right: 0px;
   top: 25px;
   z-index: 10;
-  padding: 6px 0px;
+  padding: 5px 0px;
 }
 .dropDown_list {
   padding: 7px 12px;
-  border-bottom: 2px solid rgb(200, 200, 200);
   z-index: 10;
 }
-.dropDown_list :hover {
-  background-color: rgb(232, 232, 232);
+.dropDown_options .dropDown_list:not(:last-child) {
+  border-bottom: 1px solid rgb(200, 200, 200);
+  padding: 7px 12px;
 }
+
 .dropdown_container {
   min-width: 22px;
   min-height: 22px;
