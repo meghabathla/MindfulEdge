@@ -1,9 +1,9 @@
-import React from "react";
+import React, { ChangeEventHandler } from "react";
 import { SlOptions } from "react-icons/sl";
 import "./GoalTask.css";
 
 type GoalProps = {
-  onCheckboxChange: () => void;
+  onCheckboxChange: ChangeEventHandler<HTMLInputElement>;
   isChecked: boolean;
   text: string;
 };
