@@ -18,7 +18,7 @@
   border-radius: 20%;
   appearance: none;
   background-color: transparent;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.5s ease;
 }
 .goal_checkbox:hover,
 .goal_checkbox:checked {
@@ -47,6 +47,7 @@
 .goal_options_btn {
   color: transparent;
   min-width: 22px;
+  border-radius: 50%;
   min-height: 22px;
 }
 .goal_options_btn:hover {
