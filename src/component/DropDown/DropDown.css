@@ -30,6 +30,7 @@
   color: transparent;
   cursor: pointer;
   position: relative;
+  border-radius: 50%;
 }
 .dropdown_container:hover {
   color: black;

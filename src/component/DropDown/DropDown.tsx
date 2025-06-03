@@ -13,14 +13,14 @@ type DropDownProps = {
 
 export const DropDown = ({ list }: DropDownProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  const { ref } = useOutsideClick(() => {
+  const { ref } = useOutsideClick<HTMLDivElement>(() => {
     setIsOpen(false);
   });
   return (
     <div className="dropdown_container  ">
       <SlOptions
         onClick={() => {
-          setIsOpen((prevOption) => !prevOption);
+          setIsOpen((prevIsOpen) => !prevIsOpen);
         }}
       />
 
