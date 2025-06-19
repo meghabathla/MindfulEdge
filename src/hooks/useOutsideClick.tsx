@@ -1,3 +1,4 @@
+// this hook allow to close the component when click outside of it.
 import { useEffect, useRef } from "react";
 
 export const useOutsideClick = <T extends HTMLElement>(
