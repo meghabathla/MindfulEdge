@@ -4,6 +4,9 @@
   "version": "1.0",
   "description": "A minimal Momentum-like Chrome extension with essential features.",
   "permissions": ["tabs"],
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
   "action": {
     "default_popup": "popup.html",
     "default_icon": {
