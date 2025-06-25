@@ -1,20 +1,16 @@
-import { TbExternalLink } from "react-icons/tb";
 import { FaHeadSideVirus } from "react-icons/fa";
 import { FaRegCircle } from "react-icons/fa";
 import { IoAddCircleOutline } from "react-icons/io5";
-import { WeatherWidget } from "./WeatherWidget";
+import { Link } from "./Link/Link";
+
+// import { WeatherWidget } from "./WeatherWidget";
 // import { FaRegMoon } from "react-icons/fa6";
 
 const Header = () => {
   return (
     <div className="header">
       <div className="left_header_content">
-        <div className="link_section">
-          <div className="icon_container">
-            <TbExternalLink size={25} />
-          </div>
-          <div>Links</div>
-        </div>
+        <Link />
 
         <div className="focus_section">
           <div className="icon_container">
