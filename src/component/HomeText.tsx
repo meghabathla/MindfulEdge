@@ -1,40 +1,25 @@
-import { KeyboardEvent, useEffect, useRef, useState } from "react";
+import { ChangeEventHandler, useEffect, useState } from "react";
 import DigitalClock from "./DigitalClock";
 import { GreetMessage } from "./GreetMessage";
 import { GoalTask } from "./GoalTask/GoalTask";
 
 const HomeText = () => {
   const [goal, setGoal] = useState<string>("");
-  // const [inputValue, setInputValue] = useState("");
-  const goalInputRef = useRef<HTMLInputElement>(null);
   const [isChecked, setIsChecked] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
     try {
-      if (goal) {
-        localStorage.setItem("goal", JSON.stringify(goal));
-      }
-      if (isChecked) {
-        localStorage.setItem("isChecked", JSON.stringify(isChecked));
-      }
-    } catch (error) {
-      console.log(
-        "Error in setting goal or checkedbox value from local storage",
-        error
-      );
-    }
-  }, [goal, isChecked]);
-
-  useEffect(() => {
-    try {
-      const getGoal = JSON.parse(localStorage.getItem("goal") || "");
+      const getGoal = localStorage.getItem("goal"); // make util to set , get, remove from local storage
       const getIsChecked = localStorage.getItem("isChecked");
+      console.log({ getIsChecked });
 
       if (getGoal) {
-        setGoal(getGoal);
+        setGoal(JSON.parse(getGoal));
       }
-      if (getIsChecked) {
-        setIsChecked(JSON.parse(getIsChecked));
+      if (typeof getIsChecked === "string") {
+        const checked = JSON.parse(getIsChecked) === true;
+        setIsChecked(checked);
       }
     } catch (error) {
       console.log(
@@ -44,13 +29,19 @@ const HomeText = () => {
     }
   }, []);
 
-  const handleGoal = (e: KeyboardEvent<HTMLInputElement>): void => {
-    const inputValue = goalInputRef.current?.value;
-    if (e.key === "Enter" && inputValue) {
-      setGoal(inputValue);
-      // setGoal(inputValue);
-      // setInputValue("");
-    }
+  const onCheckboxChange: ChangeEventHandler<HTMLInputElement> = (e) => {
+    const checked = e.target.checked;
+    setIsChecked(checked);
+    localStorage.setItem("isChecked", JSON.stringify(checked));
+  };
+
+  const handleDeleteGoal = (): void => {
+    setGoal("");
+    setIsEditing(true);
+    localStorage.removeItem("goal");
+  };
+  const handleEditGoal = () => {
+    setIsEditing(true);
   };
 
   return (
@@ -58,23 +49,17 @@ const HomeText = () => {
       <DigitalClock />
       <GreetMessage />
       <div className="text_small">What is your main goal for today?</div>
-      {goal ? (
-        <GoalTask
-          text={goal}
-          onCheckboxChange={() => {
-            setIsChecked((prevChecked) => !prevChecked);
-          }}
-          isChecked={isChecked}
-        />
-      ) : (
-        <input
-          ref={goalInputRef}
-          // value={inputValue}
-          onKeyDown={handleGoal}
-          className="input_goals"
-          // onChange={(e) => setInputValue(e.target.value)}
-        ></input>
-      )}
+
+      <GoalTask
+        text={goal}
+        setGoal={setGoal}
+        onCheckboxChange={onCheckboxChange}
+        isChecked={isChecked}
+        onDelete={handleDeleteGoal}
+        onEdit={handleEditGoal}
+        isEditing={isEditing}
+        setIsEditing={setIsEditing}
+      />
     </div>
   );
 };

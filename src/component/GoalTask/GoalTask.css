@@ -50,6 +50,7 @@
   border-radius: 50%;
   min-height: 22px;
 }
+
 .goal_options_btn:hover {
   color: rgba(255, 255, 255, 0.8);
   background-color: rgb(117, 104, 104, 0.6);
