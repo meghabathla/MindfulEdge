@@ -135,7 +135,7 @@ body {
 .input_goals {
   display: block;
   text-align: center;
-  width: 26%;
+  /* width: 26%; */
   border: none;
   background-color: transparent;
   border-bottom: 2px solid white;
