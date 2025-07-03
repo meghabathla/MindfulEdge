@@ -54,6 +54,7 @@
 }
 .checked_routine {
   text-decoration: line-through;
+  opacity: 0.5;
 }
 .button_submit .button_delete {
   background-color: transparent;
@@ -79,4 +80,12 @@
   cursor: pointer;
   border: none;
   color: white;
+}
+.routineEditMode {
+  border: none;
+  font-size: 15px;
+  opacity: 0.5;
+}
+.routineEditMode:focus {
+  outline-width: 0;
 }

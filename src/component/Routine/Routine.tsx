@@ -50,7 +50,6 @@ const Routine = () => {
         });
 
         setRoutine("");
-        console.log("routine", routine);
       } else {
         window.alert("you can not submit empty routine");
       }

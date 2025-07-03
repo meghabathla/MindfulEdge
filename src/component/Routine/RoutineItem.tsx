@@ -37,6 +37,7 @@ export const RoutineItem: React.FC<RoutineItemsProps> = ({
       </div>
       {isEditing ? (
         <input
+          className="routineEditMode"
           value={routine.task}
           onChange={onEditRoutine}
           ref={ref}
