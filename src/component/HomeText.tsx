@@ -6,7 +6,7 @@ import { GoalTask } from "./GoalTask/GoalTask";
 const HomeText = () => {
   const [goal, setGoal] = useState<string>("");
   const [isChecked, setIsChecked] = useState(false);
-  const [isEditing, setIsEditing] = useState(false);
+  const [isEditing, setIsEditing] = useState(true);
 
   useEffect(() => {
     try {
@@ -14,8 +14,10 @@ const HomeText = () => {
       const getIsChecked = localStorage.getItem("isChecked");
       console.log({ getIsChecked });
 
+      console.log(getGoal, "getGoal");
       if (getGoal) {
-        setGoal(JSON.parse(getGoal));
+        setGoal(getGoal);
+        setIsEditing(false);
       }
       if (typeof getIsChecked === "string") {
         const checked = JSON.parse(getIsChecked) === true;
@@ -43,6 +45,10 @@ const HomeText = () => {
   const handleEditGoal = () => {
     setIsEditing(true);
   };
+  const updateGoal = (text: string) => {
+    setGoal(text);
+    localStorage.setItem("goal", text);
+  };
 
   return (
     <div className="home_text">
@@ -51,8 +57,8 @@ const HomeText = () => {
       <div className="text_small">What is your main goal for today?</div>
 
       <GoalTask
-        text={goal}
-        setGoal={setGoal}
+        goal={goal}
+        setGoal={updateGoal}
         onCheckboxChange={onCheckboxChange}
         isChecked={isChecked}
         onDelete={handleDeleteGoal}
