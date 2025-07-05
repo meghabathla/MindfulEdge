@@ -6,14 +6,18 @@ import { getQuote } from "../util/quoteUtils";
 const Footer = () => {
   const [quote, setQuote] = useState("");
   const openChatGPT = () => {
-    window.open("https://chat.openai.com/", "_blank"); // new tab
-    // window.location.href = "https://chat.openai.com/"; // load on same page
+    if (typeof window.chrome !== "undefined" && window.chrome.tabs) {
+      windowchrome.tabs.create({ url: "https://chat.openai.com/" });
+    } else {
+      window.open("https://chat.openai.com/", "_blank", "noopener,noreferrer");
+    }
   };
 
   useEffect(() => {
     const value = getQuote();
     setQuote(value);
   }, []);
+
   return (
     <div className="footer">
       <div className=" settings_section">
