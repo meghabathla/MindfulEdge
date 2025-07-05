@@ -1,15 +1,13 @@
-/*global chrome*/
 import React from "react";
 import { TbExternalLink } from "react-icons/tb";
 
 export const Link = () => {
   const handleGoogleTab = () => {
-    // if (chrome?.tabs) {
-    //   chrome.tabs.create({ url: "https://www.google.com" });
-    // } else {
-    //   window.open("https://www.google.com", "_blank", "noopener,noreferrer");
-    // }
-    window.open("https://www.google.com", "_blank", "noopener,noreferrer");
+    if (window.chrome?.tabs) {
+      window.chrome.tabs.create({ url: "https://www.google.com" });
+    } else {
+      window.open("https://www.google.com", "_blank", "noopener,noreferrer");
+    }
   };
   return (
     <div className="link_section">
