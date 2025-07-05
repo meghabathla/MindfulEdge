@@ -1,26 +1,21 @@
-import React, {
-  ChangeEventHandler,
-  KeyboardEvent,
-  useEffect,
-  useState,
-} from "react";
+import React, { ChangeEventHandler, KeyboardEvent } from "react";
 import "./GoalTask.css";
 import { DropDown } from "../DropDown/DropDown";
 
 type GoalProps = {
   onCheckboxChange: ChangeEventHandler<HTMLInputElement>;
   isChecked: boolean;
-  text: string;
+  goal: string;
   onDelete: () => void;
   onEdit: () => void;
   isEditing: boolean;
-  setGoal: React.Dispatch<React.SetStateAction<string>>;
+  setGoal: (text: string) => void;
   setIsEditing: React.Dispatch<React.SetStateAction<boolean>>;
 };
 export const GoalTask: React.FC<GoalProps> = ({
   isChecked,
   onCheckboxChange,
-  text,
+  goal,
   setGoal,
   onDelete,
   onEdit,
@@ -28,21 +23,13 @@ export const GoalTask: React.FC<GoalProps> = ({
   setIsEditing,
 }) => {
   // const goalInputRef = useRef<HTMLInputElement>(null);
-  const [localGoal, setLocalGoal] = useState(text);
 
-  useEffect(() => {
-    if (isEditing) {
-      setLocalGoal(text); // sync with prop when editing starts
-    }
-  }, [isEditing, text]);
-
-  const handleGoalChange: ChangeEventHandler<HTMLInputElement> = (e): void => {
-    setGoal(e.target.value);
+  const handleGoalChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+    const inputValue = e.target.value;
+    setGoal(inputValue);
   };
-  const handleGoal = (e: KeyboardEvent<HTMLInputElement>) => {
+  const handleSaveGoal = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      setGoal(localGoal);
-      localStorage.setItem("goal", JSON.stringify(localGoal));
       setIsEditing(false);
     }
   };
@@ -56,16 +43,16 @@ export const GoalTask: React.FC<GoalProps> = ({
         onChange={onCheckboxChange}
       />
 
-      {(isEditing && text) || text === "" ? (
+      {isEditing ? (
         <input
-          value={text}
-          onKeyDown={handleGoal}
+          value={goal}
+          onKeyDown={handleSaveGoal}
           className="input_goals"
           onChange={handleGoalChange}
         />
       ) : (
         <div className={`goal_text ${isChecked ? "checked_goal_task" : ""}`}>
-          {text}
+          {goal}
         </div>
       )}
 
@@ -78,7 +65,7 @@ export const GoalTask: React.FC<GoalProps> = ({
               onClick: onEdit,
             },
             {
-              label: "Delete",
+              label: "Clear",
               onClick: onDelete,
             },
           ]}

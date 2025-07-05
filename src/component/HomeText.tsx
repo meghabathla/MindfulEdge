@@ -33,8 +33,10 @@ const HomeText = () => {
 
   const onCheckboxChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     const checked = e.target.checked;
-    setIsChecked(checked);
-    localStorage.setItem("isChecked", JSON.stringify(checked));
+    if (goal.trim().length > 0) {
+      setIsChecked(checked);
+      localStorage.setItem("isChecked", JSON.stringify(checked));
+    }
   };
 
   const handleDeleteGoal = (): void => {
