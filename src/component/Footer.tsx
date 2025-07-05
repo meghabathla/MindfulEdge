@@ -7,7 +7,7 @@ const Footer = () => {
   const [quote, setQuote] = useState("");
   const openChatGPT = () => {
     if (typeof window.chrome !== "undefined" && window.chrome.tabs) {
-      windowchrome.tabs.create({ url: "https://chat.openai.com/" });
+      window.chrome.tabs.create({ url: "https://chat.openai.com/" });
     } else {
       window.open("https://chat.openai.com/", "_blank", "noopener,noreferrer");
     }
