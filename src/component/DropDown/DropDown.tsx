@@ -17,7 +17,7 @@ export const DropDown = ({ list }: DropDownProps) => {
     setIsOpen(false);
   });
   return (
-    <div className="dropdown_container  ">
+    <div className="dropdown_container">
       <SlOptions
         onClick={() => {
           setIsOpen((prevIsOpen) => !prevIsOpen);
