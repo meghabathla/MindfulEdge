@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import CircularProgressBar from "./CircularProgressbar";
+import CircularProgressBar from "../CircularProgressBar/CircularProgressbar";
 
 const FocusedToday = () => {
   const [progress, setProgress] = useState(0);
