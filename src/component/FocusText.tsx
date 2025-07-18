@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import Footer from "./Footer";
 import Header from "./Header";
 import DigitalClock from "./DigitalClock";
@@ -6,10 +6,10 @@ import PlayPause from "./PlayPause/PlayPause";
 import FocusBreakBtn from "./FocusBreakBtn/FocusBreakBtn";
 import FocusOnGoal from "./FocusOnGoal/FocusOnGoal";
 import CircularProgressBar from "./CircularProgressBar/CircularProgressbar";
-import { UseFocusContext } from "../store/FocusContext";
+import { useFocusContext } from "../store/FocusContext/FocusContext";
 
 const FocusText = () => {
-  const { flag, percentage, setFlag } = useContext(UseFocusContext);
+  const { percentage } = useFocusContext();
 
   return (
     <div>

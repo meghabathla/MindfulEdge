@@ -1,6 +1,6 @@
 import React from "react";
 import "./FocusBreakBtn.css";
-import { useFocusContext } from "../../store/FocusContext";
+import { useFocusContext } from "../../store/FocusContext/FocusContext";
 
 const FocusBreakBtn = () => {
   const { isBreakMode, toggleBreakMode } = useFocusContext();

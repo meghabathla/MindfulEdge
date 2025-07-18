@@ -1,7 +1,7 @@
 import React from "react";
 import "./FocusOnGoal.css";
 import { DropDown } from "../DropDown/DropDown";
-import { useFocusContext } from "../../store/FocusContext";
+import { useFocusContext } from "../../store/FocusContext/FocusContext";
 
 const FocusOnGoal = () => {
   const { currentGoal, setCurrentGoal } = useFocusContext();

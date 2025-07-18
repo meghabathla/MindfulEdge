@@ -2,7 +2,7 @@ import FocusText from "./component/FocusText";
 import Footer from "./component/Footer";
 import Header from "./component/Header";
 import HomeText from "./component/HomeText";
-import { FocusProvider } from "./store/FocusContext";
+import { FocusProvider } from "./store/FocusContext/FocusProvider";
 import "./styles.css";
 
 function App() {

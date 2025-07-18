@@ -1,5 +1,4 @@
-import { useContext, useEffect, useState } from "react";
-import { UseFocusContext } from "../store/FocusContext";
+import { useEffect, useState } from "react";
 
 const TIME_CONFIG = {
   hour: "2-digit" as const,
@@ -23,7 +22,7 @@ const formatTime = (seconds: number) => {
 
 const DigitalClock = () => {
   const [currentTime, setCurrentTime] = useState(getCurrentTime);
-  const { elapsedTime, isPlaying, isBreakMode } = useContext(UseFocusContext);
+  // const {} = useFocusContext();
 
   const updateTime = () => {
     const time = getCurrentTime();
@@ -36,8 +35,8 @@ const DigitalClock = () => {
   }, []);
 
   // Show timer when in focus mode and timer is running, otherwise show current time
-  const displayText =
-    isPlaying && !isBreakMode ? formatTime(elapsedTime) : currentTime;
+  const displayText = "displayText";
+  // isPlaying && !isBreakMode ? formatTime(elapsedTime) : currentTime;
 
   return <span className="text_large">{displayText}</span>;
 };

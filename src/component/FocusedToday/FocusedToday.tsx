@@ -1,9 +1,9 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import CircularProgressBar from "../CircularProgressBar/CircularProgressbar";
-import { UseFocusContext } from "../../store/FocusContext";
+import { useFocusContext } from "../../store/FocusContext/FocusContext";
 
 const FocusedToday = () => {
-  const { focusSessions } = useContext(UseFocusContext);
+  const { focusSessions } = useFocusContext();
   const [todayMinutes, setTodayMinutes] = useState(0);
 
   useEffect(() => {
@@ -14,7 +14,7 @@ const FocusedToday = () => {
     });
 
     const totalMinutes = todaySessions.reduce((total, session) => {
-      return total + Math.floor  / 60);
+      return total + Math.floor(session.duration / 60);
     }, 0);
 
     setTodayMinutes(totalMinutes);
