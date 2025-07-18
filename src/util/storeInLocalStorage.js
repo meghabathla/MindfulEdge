@@ -1,3 +1,5 @@
-const updateRoutineListInLocalStorage = (key, value) => {
-  localStorage.setItem(key, JSON.stringify(value));
+const storage = {
+  set: (key, value) => localStorage.setItem(key, JSON.stringify(value)),
+  get: (key) => JSON.parse(localStorage.getItem(key) || "null"),
+  remove: (key) => localStorage.removeItem(key),
 };

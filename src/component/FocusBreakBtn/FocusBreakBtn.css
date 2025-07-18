@@ -14,11 +14,20 @@
 .break_btn {
   padding: 10px;
   opacity: 0.625;
+  transition: 0.3s;
   /* border-radius: 10px;
     background-color: rgba(255, 255, 255, 0.1); */
 }
+
 .focus_btn:hover, /*focus page btns*/
   .break_btn:hover {
   opacity: 1;
   transition: 0.3s;
+}
+
+.focus_btn.active,
+.break_btn.active {
+  opacity: 1;
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
