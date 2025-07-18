@@ -6,8 +6,11 @@ export const TaskWidget = () => {
 
   useEffect(() => {
     try {
-      const visbility = JSON.parse(localStorage.getItem("IsTaskVisible") || "");
-      setIsTaskVisible(Boolean(visbility));
+      const isTaskVisibleLocalStorage = localStorage.getItem("IsTaskVisible");
+      if (isTaskVisibleLocalStorage) {
+        const visbility = JSON.parse(isTaskVisibleLocalStorage);
+        setIsTaskVisible(Boolean(visbility));
+      }
     } catch (error) {
       console.log("Error in getting task from local storage", error);
     }

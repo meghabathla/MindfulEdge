@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 
 const TIME_CONFIG = {
-  hour: "2-digit",
-  minute: "2-digit",
+  hour: "2-digit" as const,
+  minute: "2-digit" as const,
 };
+
 const getCurrentTime = () => {
   return new Date()
     .toLocaleTimeString("en-US", TIME_CONFIG)
@@ -11,12 +12,17 @@ const getCurrentTime = () => {
     .replace("PM", "");
 };
 
-// export const getGreetMessage = ()=>{
-
-// }
+const formatTime = (seconds: number) => {
+  const minutes = Math.floor(seconds / 60);
+  const remainingSeconds = seconds % 60;
+  return `${minutes.toString().padStart(2, "0")}:${remainingSeconds
+    .toString()
+    .padStart(2, "0")}`;
+};
 
 const DigitalClock = () => {
   const [currentTime, setCurrentTime] = useState(getCurrentTime);
+  // const {} = useFocusContext();
 
   const updateTime = () => {
     const time = getCurrentTime();
@@ -24,11 +30,15 @@ const DigitalClock = () => {
   };
 
   useEffect(() => {
-    const timer = setInterval(updateTime, 1000); // why didn't we call getcurrentTime and setcurrentTime here?
+    const timer = setInterval(updateTime, 1000);
     return () => clearInterval(timer);
   }, []);
 
-  return <span className=" text_large">{currentTime}</span>;
+  // Show timer when in focus mode and timer is running, otherwise show current time
+  const displayText = "displayText";
+  // isPlaying && !isBreakMode ? formatTime(elapsedTime) : currentTime;
+
+  return <span className="text_large">{displayText}</span>;
 };
 
 export default DigitalClock;
