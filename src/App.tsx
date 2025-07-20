@@ -1,11 +1,11 @@
-import FocusText from "./component/FocusText";
 import Footer from "./component/Footer";
 import Header from "./component/Header";
-import HomeText from "./component/HomeText";
+import HomePage from "./pages/HomePage";
 import { Routes, Route } from "react-router";
 import { FocusProvider } from "./store/FocusContext/FocusProvider";
 import { GoalProvider } from "./store/GoalContext/GoalProvider";
 import "./styles.css";
+import FocusPage from "./pages/FocusPage";
 
 function App() {
   return (
@@ -14,8 +14,8 @@ function App() {
         <div className="background_img">
           <Header />
           <Routes>
-            <Route path="/" element={<HomeText />} />
-            <Route path="/focus" element={<FocusText />} />
+            <Route path="/" element={<HomePage />} />
+            <Route path="/focus" element={<FocusPage />} />
           </Routes>
           <Footer />
         </div>
