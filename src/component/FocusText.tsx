@@ -1,6 +1,4 @@
 import React from "react";
-import Footer from "./Footer";
-import Header from "./Header";
 import DigitalClock from "./DigitalClock";
 import PlayPause from "./PlayPause/PlayPause";
 import FocusBreakBtn from "./FocusBreakBtn/FocusBreakBtn";
@@ -12,24 +10,20 @@ const FocusText = () => {
   const { percentage } = useFocusContext();
 
   return (
-    <div>
-      <Header />
-
-      <div className="focus_text">
-        <CircularProgressBar
-          percentage={percentage}
-          size={400}
-          strokeWidth={8}
-        />
+    <div className="page_container focus_text">
+      <CircularProgressBar
+        percentage={percentage}
+        size={400}
+        strokeWidth={8}
+        transform="translateY(-31px)"
+      >
         <div className="inside_progressbar_text">
           <FocusBreakBtn />
           <DigitalClock />
           <FocusOnGoal />
           <PlayPause />
         </div>
-      </div>
-
-      <Footer />
+      </CircularProgressBar>
     </div>
   );
 };

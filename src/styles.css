@@ -148,14 +148,7 @@ body {
 }
 
 .home_text {
-  width: 100%;
-  top: 35%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   padding-bottom: 20px;
-  position: absolute;
 }
 
 /* -------Routine styling------ */
@@ -170,22 +163,28 @@ body {
   font-weight: bold;
 }
 
-/* -------Focus page styling------ */
-.focus_text {
+.page_container {
+  width: 100%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+
+/* -------Focus page styling------ */
+.focus_text {
+}
+
 .inside_progressbar_text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 20px;
+  height: 100%;
+  max-height: 100%;
 }
