@@ -50,8 +50,8 @@
 
 .goal_task_container:hover .goal_options_btn {
   opacity: 1;
-  color: white;
-  background-color: rgb(117, 104, 104, 0.6);
+  color: rgb(165, 165, 165);
+  background-color: rgba(255, 255, 255, 0.15);
   border-radius: 50%;
   display: flex;
   align-items: center;

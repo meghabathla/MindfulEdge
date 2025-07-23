@@ -2,7 +2,7 @@ import { useEffect, useState, useMemo } from "react";
 import { FocusSession } from "./FocusContext.types";
 import { FocusContext } from "./FocusContext";
 
-const TOTAL_DURATION = 60 * 60; // 3600 seconds = 1 hour
+const TOTAL_DURATION = 1800; // 3600 seconds = 1 hour
 
 export const FocusProvider = ({ children }: { children: React.ReactNode }) => {
   const [flag, setFlag] = useState(false);
@@ -34,6 +34,7 @@ export const FocusProvider = ({ children }: { children: React.ReactNode }) => {
   return (
     <FocusContext.Provider
       value={{
+        elapsedTime,
         flag,
         clearIntervalID,
         percentage,

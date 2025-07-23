@@ -7,6 +7,7 @@ export type UseFocusContextType = {
   setClearIntervalID: (clearIntervalID: string | null) => void;
 
   percentage: number;
+  elapsedTime: number;
 
   focusSessions: { timestamp: string; duration: number }[];
   setFocusSessions: (

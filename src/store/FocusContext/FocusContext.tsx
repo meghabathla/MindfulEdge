@@ -6,6 +6,7 @@ export const FocusContext = createContext<UseFocusContextType>({
   clearIntervalID: null,
   percentage: 0,
   focusSessions: [],
+  elapsedTime: 0,
   setFocusSessions: () => {},
   setFlag: () => {},
   setClearIntervalID: () => {},
@@ -14,5 +15,3 @@ export const FocusContext = createContext<UseFocusContextType>({
 export const useFocusContext = () => {
   return useContext(FocusContext);
 };
-
-

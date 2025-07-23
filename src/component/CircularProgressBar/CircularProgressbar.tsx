@@ -1,4 +1,4 @@
-import "./styles.css";
+import "./CircularProgressbar.css";
 
 type CircularProgressBarProps = {
   percentage: number;
@@ -30,7 +30,7 @@ const CircularProgressBar: React.FC<CircularProgressBarProps> = ({
     >
       <svg width={size} height={size}>
         <circle
-          stroke="rgba(255,255,255,0.15)"
+          stroke="rgba(255,255,255,0.3)"
           fill="none"
           strokeWidth={strokeWidth}
           cx={size / 2}

@@ -1,9 +1,9 @@
 import { FaHeadSideVirus } from "react-icons/fa";
-import { IoArrowBackCircleOutline } from "react-icons/io5";
 import { IoAddCircleOutline } from "react-icons/io5";
 import { Link } from "./Link/Link";
 import FocusedToday from "./FocusedToday/FocusedToday";
 import { useLocation, useNavigate } from "react-router-dom";
+import { BsStopCircle } from "react-icons/bs";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -16,9 +16,7 @@ const Header = () => {
       navigate(isFocusPage ? "/" : "/focus");
     };
 
-    const NavigationIcon = isFocusPage
-      ? IoArrowBackCircleOutline
-      : FaHeadSideVirus;
+    const NavigationIcon = isFocusPage ? BsStopCircle : FaHeadSideVirus;
 
     return (
       <div className="focus_section" onClick={handleOnNavigate}>
