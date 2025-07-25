@@ -23,7 +23,7 @@ const Header = () => {
         <div className="icon_container">
           <NavigationIcon size={20} />
         </div>
-        <div>{isFocusPage ? "Home" : "Focus"}</div>
+        <div>{isFocusPage ? "Exit Focus Mode" : "Focus"}</div>
       </div>
     );
   };

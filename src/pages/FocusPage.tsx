@@ -4,9 +4,16 @@ import FocusOnGoal from "../component/FocusOnGoal/FocusOnGoal";
 import CircularProgressBar from "../component/CircularProgressBar/CircularProgressbar";
 import { useFocusContext } from "../store/FocusContext/FocusContext";
 import CountDownTimer from "../component/CountDownTimer/CountDownTimer";
+import { useEffect } from "react";
 
 const FocusPage = () => {
-  const { percentage } = useFocusContext();
+  const { percentage, startFocus, stopFocus } = useFocusContext();
+
+  useEffect(() => {
+    startFocus();
+
+    return () => stopFocus();
+  }, []);
 
   return (
     <div className="page_container focus_text">

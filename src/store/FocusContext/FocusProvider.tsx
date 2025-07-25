@@ -1,47 +1,66 @@
-import { useEffect, useState, useMemo } from "react";
-import { FocusSession } from "./FocusContext.types";
+import { useState, useMemo, useRef } from "react";
 import { FocusContext } from "./FocusContext";
 
 const TOTAL_DURATION = 1800; // 3600 seconds = 1 hour
-
+const storedFocusTodayValue = () => {
+  const storedFocusValue = localStorage.getItem("focusToday");
+  return storedFocusValue ? Number(storedFocusValue) : 0;
+};
 export const FocusProvider = ({ children }: { children: React.ReactNode }) => {
-  const [flag, setFlag] = useState(false);
-  const [clearIntervalID, setClearIntervalID] = useState<string | null>(null);
-  const [elapsedTime, setElapsedTime] = useState(0); // in seconds & max is 1 hour
-  const [focusSessions, setFocusSessions] = useState<FocusSession[]>([]);
+  const [totalFocusToday, setTotalFocusToday] = useState(storedFocusTodayValue);
+  const [timeLeft, setTimeLeft] = useState(TOTAL_DURATION); // 30mins
+  const intervalID = useRef<number>();
+  const isFocusing = useMemo(() => Boolean(intervalID.current), [intervalID]);
 
-  useEffect(() => {
-    // Start an interval until elapsedTime reaches 1 hour
+  const startFocus = () => {
+    if (intervalID.current) {
+      return console.log(" focus mode is already exit or started");
+    }
     const interval = setInterval(() => {
-      setElapsedTime((prev) => {
-        if (prev >= TOTAL_DURATION) {
-          clearInterval(interval);
-          return TOTAL_DURATION;
-        }
-        return prev + 1;
+      setTimeLeft((prevtimerleft) => prevtimerleft - 1);
+
+      setTotalFocusToday((prevTotalFocusToday) => {
+        const totalFocusValue = prevTotalFocusToday + 1;
+        localStorage.setItem("focusToday", JSON.stringify(totalFocusValue));
+        return totalFocusValue;
       });
     }, 1000);
+    intervalID.current = interval;
+  };
+  //
+  const stopFocus = () => {
+    if (!intervalID.current) {
+      return console.log("Focus mode has not started yet");
+    }
+    clearInterval(intervalID.current);
+    intervalID.current = undefined;
+  };
 
-    return () => clearInterval(interval);
-  }, []);
+  const restartFocus = () => {
+    if (intervalID.current) {
+      stopFocus();
+    }
+    setTimeLeft(TOTAL_DURATION);
+    startFocus();
+  };
 
   // flag, clearIntervalID
-  const percentage = useMemo(
-    () => (elapsedTime / TOTAL_DURATION) * 100,
-    [elapsedTime]
-  );
+  const percentage = useMemo(() => {
+    const elapsedTime = TOTAL_DURATION - timeLeft;
+    return (elapsedTime / TOTAL_DURATION) * 100;
+  }, [timeLeft]);
 
   return (
     <FocusContext.Provider
       value={{
-        elapsedTime,
-        flag,
-        clearIntervalID,
+        isFocusing,
+        timeLeft,
         percentage,
-        setFlag,
-        focusSessions,
-        setFocusSessions,
-        setClearIntervalID,
+        totalFocusToday,
+        setTotalFocusToday,
+        startFocus,
+        stopFocus,
+        restartFocus,
       }}
     >
       {children}

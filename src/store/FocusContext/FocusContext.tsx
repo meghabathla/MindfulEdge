@@ -2,14 +2,14 @@ import { createContext, useContext } from "react";
 import { UseFocusContextType } from "./FocusContext.types";
 
 export const FocusContext = createContext<UseFocusContextType>({
-  flag: false,
-  clearIntervalID: null,
   percentage: 0,
-  focusSessions: [],
-  elapsedTime: 0,
-  setFocusSessions: () => {},
-  setFlag: () => {},
-  setClearIntervalID: () => {},
+  timeLeft: 0,
+  isFocusing: false,
+  totalFocusToday: 0,
+  setTotalFocusToday: () => {},
+  startFocus: () => {},
+  stopFocus: () => {},
+  restartFocus: () => {},
 });
 
 export const useFocusContext = () => {

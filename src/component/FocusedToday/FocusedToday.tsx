@@ -1,24 +1,14 @@
-import { useEffect, useState } from "react";
 import CircularProgressBar from "../CircularProgressBar/CircularProgressbar";
 import { useFocusContext } from "../../store/FocusContext/FocusContext";
+import { useMemo } from "react";
 
 const FocusedToday = () => {
-  const { focusSessions } = useFocusContext();
-  const [todayMinutes, setTodayMinutes] = useState(0);
+  const { totalFocusToday } = useFocusContext();
 
-  useEffect(() => {
-    const today = new Date();
-    const todaySessions = focusSessions.filter((session) => {
-      const sessionDate = new Date(session?.timestamp);
-      return sessionDate.toDateString() === today.toDateString();
-    });
-
-    const totalMinutes = todaySessions.reduce((total, session) => {
-      return total + Math.floor(session.duration / 60);
-    }, 0);
-
-    setTodayMinutes(totalMinutes);
-  }, [focusSessions]);
+  const totalMinutesFocused = useMemo(() => {
+    return totalFocusToday > 60 ? Math.floor(totalFocusToday / 60) : 0;
+    //to persist the value set in local storage
+  }, [totalFocusToday]);
 
   return (
     <div className="focus_today_section">
@@ -26,13 +16,13 @@ const FocusedToday = () => {
         <div className="icon_container">
           <div style={{ padding: "3px" }}>
             <CircularProgressBar
-              percentage={Math.min(todayMinutes, 100)}
+              percentage={Math.min(totalMinutesFocused, 100)}
               size={20}
-              strokeWidth={2}
+              strokeWidth={4}
             />
           </div>
         </div>
-        <div style={{ fontSize: "20px" }}>{todayMinutes}</div>
+        <div style={{ fontSize: "20px" }}>{totalMinutesFocused}</div>
         <div style={{ fontSize: "20px" }}>m</div>
       </div>
       <div className="header_text">Focused Today</div>

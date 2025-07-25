@@ -1,24 +1,15 @@
-import { useEffect, useState } from "react";
 import "./CountDownTimer.css";
+import { useFocusContext } from "../../store/FocusContext/FocusContext";
 
 const CountDownTimer = () => {
-  const [timerLeft, setTimerLeft] = useState(1800);
-
-  useEffect(() => {
-    if (timerLeft <= 0) return;
-    const interval = setInterval(() => {
-      setTimerLeft(timerLeft - 1);
-    }, 1000);
-    return () => clearInterval(interval);
-  }, [timerLeft]);
-
+  const { timeLeft } = useFocusContext();
   const calculateTimeLeft = (timeLeft: number) => {
-    const minutes = String(Math.floor(timeLeft / 60)).padStart(2, "0");
-    const seconds = String(timeLeft % 60).padStart(2, "0");
+    const minutes = String(Math.floor(timeLeft / 60)).padStart(2, "0"); // 30: 00 mins
+    const seconds = String(timeLeft % 60).padStart(2, "0"); // 3 : 4 --> 03: 04 seconds
     return `${minutes}:${seconds}`;
   };
 
-  return <div className="text_large">{calculateTimeLeft(timerLeft)}</div>;
+  return <div className="text_large">{calculateTimeLeft(timeLeft)}</div>;
 };
 
 export default CountDownTimer;
