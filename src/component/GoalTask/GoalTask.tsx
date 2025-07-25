@@ -1,36 +1,32 @@
 import React, { ChangeEventHandler, KeyboardEvent } from "react";
 import "./GoalTask.css";
 import { DropDown } from "../DropDown/DropDown";
+import { useGoalContext } from "../../store/GoalContext/GoalContext";
 
-type GoalProps = {
-  onCheckboxChange: ChangeEventHandler<HTMLInputElement>;
-  isChecked: boolean;
-  goal: string;
-  onDelete: () => void;
-  onEdit: () => void;
-  isEditing: boolean;
-  setGoal: (text: string) => void;
-  setIsEditing: React.Dispatch<React.SetStateAction<boolean>>;
-};
-export const GoalTask: React.FC<GoalProps> = ({
-  isChecked,
-  onCheckboxChange,
-  goal,
-  setGoal,
-  onDelete,
-  onEdit,
-  isEditing,
-  setIsEditing,
-}) => {
-  // const goalInputRef = useRef<HTMLInputElement>(null);
+export const GoalTask: React.FC = () => {
+  const {
+    updateIsChecked,
+    goal,
+    isChecked,
+    isEditing,
+    updateGoal,
+    deleteGoal,
+    startEditing,
+    stopEditing,
+  } = useGoalContext();
+
+  const onCheckboxChange: ChangeEventHandler<HTMLInputElement> = (e) => {
+    const checked = e.target.checked;
+    updateIsChecked(checked);
+  };
 
   const handleGoalChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     const inputValue = e.target.value;
-    setGoal(inputValue);
+    updateGoal(inputValue);
   };
   const handleSaveGoal = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      setIsEditing(false);
+      stopEditing();
     }
   };
 
@@ -62,11 +58,11 @@ export const GoalTask: React.FC<GoalProps> = ({
           list={[
             {
               label: "Edit",
-              onClick: onEdit,
+              onClick: startEditing,
             },
             {
               label: "Clear",
-              onClick: onDelete,
+              onClick: deleteGoal,
             },
           ]}
         />

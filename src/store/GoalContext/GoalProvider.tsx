@@ -1,9 +1,7 @@
-import { ChangeEventHandler, useEffect, useState } from "react";
-import DigitalClock from "./DigitalClock";
-import { GreetMessage } from "./GreetMessage";
-import { GoalTask } from "./GoalTask/GoalTask";
+import React, { useEffect, useState } from "react";
+import { GoalContext } from "./GoalContext";
 
-const HomeText = () => {
+export const GoalProvider = ({ children }: { children: React.ReactNode }) => {
   const [goal, setGoal] = useState<string>("");
   const [isChecked, setIsChecked] = useState(false);
   const [isEditing, setIsEditing] = useState(true);
@@ -12,9 +10,7 @@ const HomeText = () => {
     try {
       const getGoal = localStorage.getItem("goal"); // make util to set , get, remove from local storage
       const getIsChecked = localStorage.getItem("isChecked");
-      console.log({ getIsChecked });
 
-      console.log(getGoal, "getGoal");
       if (getGoal) {
         setGoal(getGoal);
         setIsEditing(false);
@@ -31,45 +27,48 @@ const HomeText = () => {
     }
   }, []);
 
-  const onCheckboxChange: ChangeEventHandler<HTMLInputElement> = (e) => {
-    const checked = e.target.checked;
+  const updateIsChecked = (checked: boolean) => {
     if (goal.trim().length > 0) {
       setIsChecked(checked);
       localStorage.setItem("isChecked", JSON.stringify(checked));
     }
   };
 
-  const handleDeleteGoal = (): void => {
+  const deleteGoal = (): void => {
     setGoal("");
+    updateIsChecked(false);
+
     setIsEditing(true);
     localStorage.removeItem("goal");
   };
-  const handleEditGoal = () => {
-    setIsEditing(true);
-  };
+
   const updateGoal = (text: string) => {
     setGoal(text);
     localStorage.setItem("goal", text);
   };
 
-  return (
-    <div className="home_text">
-      <DigitalClock />
-      <GreetMessage />
-      <div className="text_small">What is your main goal for today?</div>
+  const startEditing = () => {
+    setIsEditing(true);
+  };
 
-      <GoalTask
-        goal={goal}
-        setGoal={updateGoal}
-        onCheckboxChange={onCheckboxChange}
-        isChecked={isChecked}
-        onDelete={handleDeleteGoal}
-        onEdit={handleEditGoal}
-        isEditing={isEditing}
-        setIsEditing={setIsEditing}
-      />
-    </div>
+  const stopEditing = () => {
+    setIsEditing(false);
+  };
+
+  return (
+    <GoalContext.Provider
+      value={{
+        goal,
+        isChecked,
+        isEditing,
+        updateIsChecked,
+        deleteGoal,
+        updateGoal,
+        startEditing,
+        stopEditing,
+      }}
+    >
+      {children}
+    </GoalContext.Provider>
   );
 };
-
-export default HomeText;

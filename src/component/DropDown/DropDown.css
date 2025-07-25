@@ -22,18 +22,18 @@
 }
 
 .dropdown_container {
-  width: 22px;
-  height: 22px;
+  min-width: 22px;
+  min-height: 22px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: transparent;
   cursor: pointer;
   position: relative;
   border-radius: 50%;
 }
 .dropdown_container:hover {
-  color: rgb(7, 7, 7);
+  opacity: 1;
+  color: rgb(158, 158, 158);
   transition: 0.3s;
   background-color: rgb(225, 225, 225, 0.3);
   border-radius: 50%;

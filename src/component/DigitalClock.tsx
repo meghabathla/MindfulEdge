@@ -11,10 +11,6 @@ const getCurrentTime = () => {
     .replace("PM", "");
 };
 
-// export const getGreetMessage = ()=>{
-
-// }
-
 const DigitalClock = () => {
   const [currentTime, setCurrentTime] = useState(getCurrentTime);
 
@@ -24,7 +20,7 @@ const DigitalClock = () => {
   };
 
   useEffect(() => {
-    const timer = setInterval(updateTime, 1000); // why didn't we call getcurrentTime and setcurrentTime here?
+    const timer = setInterval(updateTime, 1000);
     return () => clearInterval(timer);
   }, []);
 

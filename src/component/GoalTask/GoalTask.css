@@ -6,8 +6,6 @@
   min-width: 400px;
   align-items: start;
   gap: 20px;
-
-  /* font-size: 27px; */
 }
 .goal_checkbox {
   opacity: 0;
@@ -20,8 +18,7 @@
   background-color: transparent;
   transition: opacity 0.5s ease;
 }
-.goal_checkbox:hover,
-.goal_checkbox:checked {
+.goal_task_container:hover .goal_checkbox {
   opacity: 1;
 }
 
@@ -35,25 +32,26 @@
   align-items: center;
   justify-content: center;
 }
-.goal_text {
-  font-size: 30px;
-}
-
 .checked_goal_task {
   text-decoration: line-through;
   color: rgba(255, 255, 255, 0.8);
 }
+.goal_text {
+  font-size: 30px;
+}
 
 .goal_options_btn {
+  opacity: 0;
   color: transparent;
   min-width: 22px;
   border-radius: 50%;
   min-height: 22px;
 }
 
-.goal_options_btn:hover {
-  color: rgba(255, 255, 255, 0.8);
-  background-color: rgb(117, 104, 104, 0.6);
+.goal_task_container:hover .goal_options_btn {
+  opacity: 1;
+  color: rgb(165, 165, 165);
+  background-color: rgba(255, 255, 255, 0.15);
   border-radius: 50%;
   display: flex;
   align-items: center;
