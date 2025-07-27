@@ -38,17 +38,21 @@ export const getFocusTodayFromLocalStorage = (): FocusTodayType => {
 };
 
 export const setFocusTodayInLocalStorage = (totalFocusValue: number) => {
-  const { date: focusDate } = getFocusTodayFromLocalStorage();
-
+  const { date: focusDate, focusTime } = getFocusTodayFromLocalStorage();
+  console.log("first", focusDate, focusTime);
   if (isSameDate(focusDate)) {
+    console.log("isamedate");
     localStorage.setItem(
       "focusToday",
       JSON.stringify({ focusTime: totalFocusValue, date: focusDate })
     );
   } else {
+    console.log("else");
     localStorage.setItem(
       "focusToday",
       JSON.stringify({ focusTime: 0, date: new Date() })
     );
+    return 0;
   }
+  return totalFocusValue;
 };

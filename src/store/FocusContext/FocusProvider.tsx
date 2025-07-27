@@ -23,9 +23,8 @@ export const FocusProvider = ({ children }: { children: React.ReactNode }) => {
 
       setTotalFocusToday((prevTotalFocusToday) => {
         const totalFocusValue = prevTotalFocusToday + 1;
-
-        setFocusTodayInLocalStorage(totalFocusValue);
-        return totalFocusValue;
+        const value = setFocusTodayInLocalStorage(totalFocusValue);
+        return value;
       });
     }, 1000);
     intervalID.current = interval;
