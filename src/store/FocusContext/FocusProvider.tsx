@@ -2,12 +2,39 @@ import { useState, useMemo, useRef } from "react";
 import { FocusContext } from "./FocusContext";
 
 const TOTAL_DURATION = 1800; // 3600 seconds = 1 hour
-const storedFocusTodayValue = () => {
+
+const isSameDate = (date: Date): boolean => {
+  const currentDate = new Date();
+  const isDateSame = currentDate.getDate() === date.getDate();
+  const isMonthSame = currentDate.getMonth() === date.getMonth();
+  const isYearSame = currentDate.getFullYear() === date.getFullYear();
+
+  if (isDateSame && isMonthSame && isYearSame) {
+    return true;
+  }
+  return false;
+};
+
+const getFocusTodayFromLocalStorage = () => {
   const storedFocusValue = localStorage.getItem("focusToday");
-  return storedFocusValue ? Number(storedFocusValue) : 0;
+
+  const FocusTodayObj = {
+    focusTime: "2000",
+    date: new Date(),
+  };
+
+  if (FocusTodayObj && !isNaN(Number(FocusTodayObj.focusTime))) {
+    if (isSameDate(FocusTodayObj.date)) {
+      return Number(FocusTodayObj.focusTime);
+    }
+  }
+
+  return 0;
 };
 export const FocusProvider = ({ children }: { children: React.ReactNode }) => {
-  const [totalFocusToday, setTotalFocusToday] = useState(storedFocusTodayValue);
+  const [totalFocusToday, setTotalFocusToday] = useState(
+    getFocusTodayFromLocalStorage
+  );
   const [timeLeft, setTimeLeft] = useState(TOTAL_DURATION); // 30mins
   const intervalID = useRef<number>();
   const isFocusing = useMemo(() => Boolean(intervalID.current), [intervalID]);
