@@ -2,27 +2,18 @@ import React from "react";
 import { IoPlay } from "react-icons/io5";
 import { PiPauseFill } from "react-icons/pi";
 import "./PlayPause.css";
-// import { useFocusContext } from "../../store/FocusContext";
+import { useFocusContext } from "../../store/FocusContext/FocusContext";
 
 const PlayPause = () => {
-  // const { isPlaying, startTimer, pauseTimer } = useFocusContext();
-
-  const isPlaying = false;
-
-  const togglePlayPause = () => {
-    // if (isPlaying) {
-    //   pauseTimer();
-    // } else {
-    //   startTimer();
-    // }
-  };
+  const { isFocusing } = useFocusContext();
+  console.log(isFocusing);
 
   return (
     <div className="play_pause_button">
-      {isPlaying ? (
-        <PiPauseFill className="pause_icon" onClick={togglePlayPause} />
+      {isFocusing ? (
+        <PiPauseFill className="pause_icon" />
       ) : (
-        <IoPlay className="play_icon" onClick={togglePlayPause} />
+        <IoPlay className="play_icon" />
       )}
     </div>
   );
