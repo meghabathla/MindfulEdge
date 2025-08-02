@@ -1,74 +1,88 @@
+import wallpaper1 from "../assets/wallpaper1.jpg";
+import wallpaper2 from "../assets/wallpaper2.jpg";
+import wallpaper3 from "../assets/wallpaper3.jpg";
+import wallpaper4 from "../assets/wallpaper4.jpg";
+import wallpaper5 from "../assets/wallpaper5.jpg";
+import wallpaper6 from "../assets/wallpaper6.jpg";
+import wallpaper7 from "../assets/wallpaper7.jpg";
+import wallpaper8 from "../assets/wallpaper8.jpg";
+import wallpaper9 from "../assets/wallpaper9.jpg";
+import wallpaper10 from "../assets/wallpaper10.jpg";
+import wallpaper11 from "../assets/wallpaper11.jpg";
+import wallpaper12 from "../assets/wallpaper12.jpg";
+import wallpaper13 from "../assets/wallpaper13.jpg";
+import wallpaper14 from "../assets/wallpaper14.jpg";
+import wallpaper15 from "../assets/wallpaper15.jpg";
+import wallpaper16 from "../assets/wallpaper16.jpg";
+import wallpaper17 from "../assets/wallpaper17.jpg";
+
 export const backgroundImages = [
   {
     imageNo: 1,
-    imageURL: "./assets/wallpaper1.jpg",
+    imageURL: wallpaper1,
   },
   {
     imageNo: 2,
-    imageURL: "./assets/wallpaper2.jpg",
+    imageURL: wallpaper2,
   },
   {
     imageNo: 3,
-    imageURL: "./assets/wallpaper3.jpg",
+    imageURL: wallpaper3,
   },
   {
     imageNo: 4,
-    imageURL: "./assets/wallpaper4.jpg",
+    imageURL: wallpaper4,
   },
   {
     imageNo: 5,
-    imageURL: "./assets/wallpaper5.jpg",
+    imageURL: wallpaper5,
   },
   {
     imageNo: 6,
-    imageURL: "./assets/wallpaper6.jpg",
+    imageURL: wallpaper6,
   },
   {
     imageNo: 7,
-    imageURL: "./assets/wallpaper7.jpg",
+    imageURL: wallpaper7,
   },
   {
     imageNo: 8,
-    imageURL: "./assets/wallpaper8.jpg",
+    imageURL: wallpaper8,
   },
   {
     imageNo: 9,
-    imageURL: "./assets/wallpaper9.jpg",
+    imageURL: wallpaper9,
   },
   {
     imageNo: 10,
-    imageURL: "./assets/wallpaper10.jpg",
+    imageURL: wallpaper10,
   },
   {
     imageNo: 11,
-    imageURL: "./assets/wallpaper11.jpg",
+    imageURL: wallpaper11,
   },
   {
     imageNo: 12,
-    imageURL: "./assets/wallpaper12.jpg",
+    imageURL: wallpaper12,
   },
   {
     imageNo: 13,
-    imageURL: "./assets/wallpaper13.jpg",
+    imageURL: wallpaper13,
   },
   {
     imageNo: 14,
-    imageURL: "./assets/wallpaper14.jpg",
+    imageURL: wallpaper14,
   },
   {
     imageNo: 15,
-    imageURL: "./assets/wallpaper15.jpg",
+    imageURL: wallpaper15,
   },
   {
     imageNo: 16,
-    imageURL: "./assets/wallpaper16.jpg",
+    imageURL: wallpaper16,
   },
   {
     imageNo: 17,
-    imageURL: "./assets/wallpaper17.jpg",
-  },
-  {
-    imageNo: 18,
-    imageURL: "./assets/wallpaper18.jpg",
+    imageURL: wallpaper17,
   },
 ];
