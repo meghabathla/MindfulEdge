@@ -12,12 +12,14 @@ export const FocusProvider = ({ children }: { children: React.ReactNode }) => {
   // const [focusDate, setFocusDate] = useState(new Date());
   const intervalID = useRef<number>();
   const [timeLeft, setTimeLeft] = useState(TOTAL_DURATION); // 30mins
-  const isFocusing = useMemo(() => Boolean(intervalID.current), [intervalID]);
+  const [isFocusing, setIsFocusing] = useState(false);
 
   const startFocus = () => {
     if (intervalID.current) {
-      return console.log(" focus mode is already exit or started");
+      console.log(" focus mode is already exit or started");
+      return;
     }
+    setIsFocusing(true);
     const interval = setInterval(() => {
       setTimeLeft((prevtimerleft) => prevtimerleft - 1);
 
@@ -32,10 +34,12 @@ export const FocusProvider = ({ children }: { children: React.ReactNode }) => {
 
   const stopFocus = () => {
     if (!intervalID.current) {
-      return console.log("Focus mode has not started yet");
+      console.log("Focus mode has not started yet");
+      return;
     }
     clearInterval(intervalID.current);
     intervalID.current = undefined;
+    setIsFocusing(false);
   };
 
   const restartFocus = () => {
