@@ -6,12 +6,18 @@ import { FocusProvider } from "./store/FocusContext/FocusProvider";
 import { GoalProvider } from "./store/GoalContext/GoalProvider";
 import "./styles.css";
 import FocusPage from "./pages/FocusPage";
+import { getDailyBackgroundImage } from "./util/backgroundImageUtils";
 
 function App() {
   return (
     <GoalProvider>
       <FocusProvider>
-        <div className="background_img">
+        <div
+          className="background_img"
+          style={{
+            backgroundImage: `url(${getDailyBackgroundImage()})`,
+          }}
+        >
           <Header />
           <Routes>
             <Route path="/" element={<HomePage />} />
