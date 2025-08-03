@@ -1,10 +1,9 @@
 import { IoMdSettings } from "react-icons/io";
 import { TaskWidget } from "./TaskWidget";
-import { useEffect, useState } from "react";
-import { getQuote } from "../util/quoteUtils";
+import { getDailyListItem } from "../util/common";
+import { quotesList } from "../constants/quotes";
 
 const Footer = () => {
-  const [quote, setQuote] = useState("");
   const openChatGPT = () => {
     if (typeof window.chrome !== "undefined" && window.chrome.tabs) {
       window.chrome.tabs.create({ url: "https://chat.openai.com/" });
@@ -13,18 +12,13 @@ const Footer = () => {
     }
   };
 
-  useEffect(() => {
-    const value = getQuote();
-    setQuote(value);
-  }, []);
-
   return (
     <div className="footer">
       <div className=" settings_section">
         <IoMdSettings style={{ color: "rgb(162, 160, 160)" }} size={20} />
         <div onClick={openChatGPT}>Ask AI</div>
       </div>
-      <div>{quote}</div>
+      <div>{getDailyListItem(quotesList).quotation}</div>
       <TaskWidget />
     </div>
   );
