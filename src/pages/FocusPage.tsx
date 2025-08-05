@@ -1,10 +1,10 @@
 import PlayPause from "../component/PlayPause/PlayPause";
 import FocusBreakBtn from "../component/FocusBreakBtn/FocusBreakBtn";
-import FocusOnGoal from "../component/FocusOnGoal/FocusOnGoal";
 import CircularProgressBar from "../component/CircularProgressBar/CircularProgressbar";
 import { useFocusContext } from "../store/FocusContext/FocusContext";
 import CountDownTimer from "../component/CountDownTimer/CountDownTimer";
 import { useEffect } from "react";
+import { GoalTask } from "../component/GoalTask/GoalTask";
 
 const FocusPage = () => {
   const { percentage, startFocus, stopFocus } = useFocusContext();
@@ -26,7 +26,7 @@ const FocusPage = () => {
         <div className="inside_progressbar_text">
           <FocusBreakBtn />
           <CountDownTimer />
-          <FocusOnGoal />
+          <GoalTask />
           <PlayPause />
         </div>
       </CircularProgressBar>

@@ -15,7 +15,7 @@ const Footer = () => {
   return (
     <div className="footer">
       <div className=" settings_section">
-        <IoMdSettings style={{ color: "rgb(162, 160, 160)" }} size={20} />
+        <IoMdSettings style={{ color: "rgb(237, 237, 237)" }} size={20} />
         <div onClick={openChatGPT}>Ask AI</div>
       </div>
       <div>{getDailyListItem(quotesList).quotation}</div>

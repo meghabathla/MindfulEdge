@@ -4,6 +4,7 @@ import { ImHome } from "react-icons/im";
 import { Link } from "./Link/Link";
 import FocusedToday from "./FocusedToday/FocusedToday";
 import { useLocation, useNavigate } from "react-router-dom";
+import { WeatherWidget } from "./Weather/WeatherWidget";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -45,7 +46,7 @@ const Header = () => {
 
         <FocusedToday />
 
-        {/* <WeatherWidget /> */}
+        <WeatherWidget />
       </div>
     </div>
   );
