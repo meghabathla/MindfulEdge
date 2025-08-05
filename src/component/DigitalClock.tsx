@@ -3,7 +3,8 @@ import { useEffect, useState } from "react";
 const TIME_CONFIG = {
   hour: "2-digit",
   minute: "2-digit",
-};
+} as const;
+
 const getCurrentTime = () => {
   return new Date()
     .toLocaleTimeString("en-US", TIME_CONFIG)
