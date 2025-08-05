@@ -6,7 +6,6 @@ import { getLocationPoints } from "./LocationPoints";
 export const WeatherWidget = () => {
   const [location, setLocation] = useState<string>("");
   const [temperature, setTemperature] = useState<number>();
-  const [error, setError] = useState<unknown>();
   const [iconCode, setIconCode] = useState<string | null>(null);
 
   const getCityWeatherData = async () => {
@@ -14,7 +13,11 @@ export const WeatherWidget = () => {
     if (location) {
       try {
         const response = await axios.get(
-          `https://api.openweathermap.org/data/2.5/weather?lat=${location.lat}&lon=${location.long}&units=metric&appid=8a0b50cebe4d4758052e5a7cf1451b7c`
+          `https://api.openweathermap.org/data/2.5/weather?lat=${
+            location.lat
+          }&lon=${location.long}&units=metric&appid=${
+            import.meta.env.VITE_OPENWEATHER_API_KEY
+          }`
         );
         const weatherData = {
           location: response.data.name,
@@ -34,7 +37,6 @@ export const WeatherWidget = () => {
         );
       } catch (error) {
         console.log("Error fetching weather data:", error);
-        setError(error);
       }
     } else {
       console.log("else");
