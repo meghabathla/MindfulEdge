@@ -1,4 +1,3 @@
-import React from "react";
 import { IoPlay } from "react-icons/io5";
 import { PiPauseFill } from "react-icons/pi";
 import { VscDebugRestart } from "react-icons/vsc";
