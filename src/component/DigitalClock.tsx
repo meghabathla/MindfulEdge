@@ -12,7 +12,7 @@ const getCurrentTime = () => {
 };
 
 const DigitalClock = () => {
-  const [currentTime, setCurrentTime] = useState(getCurrentTime);
+  const [currentTime, setCurrentTime] = useState(getCurrentTime());
 
   const updateTime = () => {
     const time = getCurrentTime();
