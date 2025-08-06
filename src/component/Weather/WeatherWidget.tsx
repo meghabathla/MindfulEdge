@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { TiWeatherSunny } from "react-icons/ti";
 import { getLocationPoints } from "./LocationPoints";
+import { OPENWEATHER_API_KEY } from "./weatherConstant";
 
 export const WeatherWidget = () => {
   const [location, setLocation] = useState<string>("");
@@ -13,11 +14,7 @@ export const WeatherWidget = () => {
     if (location) {
       try {
         const response = await axios.get(
-          `https://api.openweathermap.org/data/2.5/weather?lat=${
-            location.lat
-          }&lon=${location.long}&units=metric&appid=${
-            import.meta.env.VITE_OPENWEATHER_API_KEY
-          }`
+          `https://api.openweathermap.org/data/2.5/weather?lat=${location.lat}&lon=${location.long}&units=metric&appid=${OPENWEATHER_API_KEY}`
         );
         const weatherData = {
           location: response.data.name,
