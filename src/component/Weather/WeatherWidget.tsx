@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { TiWeatherSunny } from "react-icons/ti";
 import { getLocationPoints } from "./LocationPoints";
-import { OPENWEATHER_API_KEY } from "./weatherConstant";
 
 export const WeatherWidget = () => {
   const [location, setLocation] = useState<string>("");
@@ -13,14 +12,14 @@ export const WeatherWidget = () => {
     const location = await getLocationPoints();
     if (location) {
       try {
-        console.log("API KEY:", import.meta.env.VITE_OPENWEATHER_API_KEY);
+        console.log("API KEY:", import.meta.env.VITE_OPEN_WEATHER_API_KEY);
+        console.log(location, "location");
 
-        console.log(OPENWEATHER_API_KEY);
         const response = await axios.get(
           `https://api.openweathermap.org/data/2.5/weather?lat=${
             location.lat
           }&lon=${location.long}&units=metric&appid=${
-            import.meta.env.VITE_OPENWEATHER_API_KEY
+            import.meta.env.VITE_OPEN_WEATHER_API_KEY
           }`
         );
         const weatherData = {
@@ -50,19 +49,19 @@ export const WeatherWidget = () => {
   };
 
   useEffect(() => {
-    const cached = localStorage.getItem("weatherData");
-    const cacheExpiry = localStorage.getItem("weatherDataExpiry");
+    // const cached = localStorage.getItem("weatherData");
+    // const cacheExpiry = localStorage.getItem("weatherDataExpiry");
 
-    if (cached && cacheExpiry && new Date().getTime() < Number(cacheExpiry)) {
-      const data = JSON.parse(cached);
-      console.log(data, "data");
-      setLocation(data.location);
-      setTemperature(data.temperature);
-      setIconCode(data.iconCode);
-      return;
-    } else {
-      getCityWeatherData();
-    }
+    // if (cached && cacheExpiry && new Date().getTime() < Number(cacheExpiry)) {
+    //   const data = JSON.parse(cached);
+    //   console.log(data, "data");
+    //   setLocation(data.location);
+    //   setTemperature(data.temperature);
+    //   setIconCode(data.iconCode);
+    //   return;
+    // } else {
+    getCityWeatherData();
+    // }
   }, []);
 
   const iconUrl = iconCode
