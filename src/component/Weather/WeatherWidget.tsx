@@ -13,8 +13,15 @@ export const WeatherWidget = () => {
     const location = await getLocationPoints();
     if (location) {
       try {
+        console.log("API KEY:", import.meta.env.VITE_OPENWEATHER_API_KEY);
+
+        console.log(OPENWEATHER_API_KEY);
         const response = await axios.get(
-          `https://api.openweathermap.org/data/2.5/weather?lat=${location.lat}&lon=${location.long}&units=metric&appid=${OPENWEATHER_API_KEY}`
+          `https://api.openweathermap.org/data/2.5/weather?lat=${
+            location.lat
+          }&lon=${location.long}&units=metric&appid=${
+            import.meta.env.VITE_OPENWEATHER_API_KEY
+          }`
         );
         const weatherData = {
           location: response.data.name,
@@ -48,6 +55,7 @@ export const WeatherWidget = () => {
 
     if (cached && cacheExpiry && new Date().getTime() < Number(cacheExpiry)) {
       const data = JSON.parse(cached);
+      console.log(data, "data");
       setLocation(data.location);
       setTemperature(data.temperature);
       setIconCode(data.iconCode);
