@@ -11,7 +11,6 @@ const FocusPage = () => {
 
   useEffect(() => {
     startFocus();
-
     return () => stopFocus();
   }, []);
 

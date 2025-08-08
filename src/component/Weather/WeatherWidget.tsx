@@ -12,15 +12,8 @@ export const WeatherWidget = () => {
     const location = await getLocationPoints();
     if (location) {
       try {
-        console.log("API KEY:", import.meta.env.VITE_OPEN_WEATHER_API_KEY);
-        console.log(location, "location");
-
         const response = await axios.get(
-          `https://api.openweathermap.org/data/2.5/weather?lat=${
-            location.lat
-          }&lon=${location.long}&units=metric&appid=${
-            import.meta.env.VITE_OPEN_WEATHER_API_KEY
-          }`
+          `https://api.openweathermap.org/data/2.5/weather?lat=${location.lat}&lon=${location.long}&units=metric&appid=8a0b50cebe4d4758052e5a7cf1451b7c`
         );
         const weatherData = {
           location: response.data.name,
@@ -36,32 +29,30 @@ export const WeatherWidget = () => {
         localStorage.setItem("weatherData", JSON.stringify(weatherData));
         localStorage.setItem(
           "weatherDataExpiry",
-          (new Date().getTime() + 5 * 60 * 1000).toString()
+          (new Date().getTime() + 10 * 60 * 1000).toString()
         );
       } catch (error) {
         console.log("Error fetching weather data:", error);
       }
     } else {
-      console.log("else");
       setLocation("Delhi");
       setTemperature(22);
     }
   };
 
   useEffect(() => {
-    // const cached = localStorage.getItem("weatherData");
-    // const cacheExpiry = localStorage.getItem("weatherDataExpiry");
+    const cached = localStorage.getItem("weatherData");
+    const cacheExpiry = localStorage.getItem("weatherDataExpiry");
 
-    // if (cached && cacheExpiry && new Date().getTime() < Number(cacheExpiry)) {
-    //   const data = JSON.parse(cached);
-    //   console.log(data, "data");
-    //   setLocation(data.location);
-    //   setTemperature(data.temperature);
-    //   setIconCode(data.iconCode);
-    //   return;
-    // } else {
-    getCityWeatherData();
-    // }
+    if (cached && cacheExpiry && new Date().getTime() < Number(cacheExpiry)) {
+      const data = JSON.parse(cached);
+      setLocation(data.location);
+      setTemperature(data.temperature);
+      setIconCode(data.iconCode);
+      return;
+    } else {
+      getCityWeatherData();
+    }
   }, []);
 
   const iconUrl = iconCode

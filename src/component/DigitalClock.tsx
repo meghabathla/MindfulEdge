@@ -25,7 +25,11 @@ const DigitalClock = () => {
     return () => clearInterval(timer);
   }, []);
 
-  return <span className=" text_large">{currentTime}</span>;
+  return (
+    <span className=" text_large">
+      {currentTime ? currentTime : "not visible"}
+    </span>
+  );
 };
 
 export default DigitalClock;

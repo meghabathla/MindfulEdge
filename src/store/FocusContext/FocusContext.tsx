@@ -6,10 +6,12 @@ export const FocusContext = createContext<UseFocusContextType>({
   timeLeft: 0,
   isFocusing: false,
   totalFocusToday: 0,
+  isOnFocusPage: false,
   setTotalFocusToday: () => {},
   startFocus: () => {},
   stopFocus: () => {},
   restartFocus: () => {},
+  togglePageContent: () => {},
 });
 
 export const useFocusContext = () => {

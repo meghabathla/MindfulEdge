@@ -9,10 +9,14 @@ const TOTAL_DURATION = 1800; // 3600 seconds = 1 hour
 
 export const FocusProvider = ({ children }: { children: React.ReactNode }) => {
   const [totalFocusToday, setTotalFocusToday] = useState(0);
-  // const [focusDate, setFocusDate] = useState(new Date());
   const intervalID = useRef<number>();
   const [timeLeft, setTimeLeft] = useState(TOTAL_DURATION); // 30mins
   const [isFocusing, setIsFocusing] = useState(false);
+  const [isOnFocusPage, setIsOnFocusPage] = useState(false);
+
+  const togglePageContent = () => {
+    setIsOnFocusPage((prevPageContent) => !prevPageContent);
+  };
 
   const startFocus = () => {
     if (intervalID.current) {
@@ -59,7 +63,6 @@ export const FocusProvider = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     const { focusTime } = getFocusTodayFromLocalStorage();
     setTotalFocusToday(focusTime);
-    // setFocusDate(date);
   }, []);
 
   return (
@@ -73,6 +76,8 @@ export const FocusProvider = ({ children }: { children: React.ReactNode }) => {
         startFocus,
         stopFocus,
         restartFocus,
+        isOnFocusPage,
+        togglePageContent,
       }}
     >
       {children}

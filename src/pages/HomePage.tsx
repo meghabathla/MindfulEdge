@@ -8,7 +8,6 @@ const HomePage = () => {
       <DigitalClock />
       <GreetMessage />
       <div className="text_small">What is your main goal for today?</div>
-
       <GoalTask />
     </div>
   );

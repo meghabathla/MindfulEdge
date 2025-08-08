@@ -5,8 +5,10 @@ export type UseFocusContextType = {
   timeLeft: number;
   isFocusing: boolean;
   totalFocusToday: number;
+  isOnFocusPage: boolean;
   setTotalFocusToday: Dispatch<SetStateAction<number>>;
   startFocus: () => void;
   stopFocus: () => void;
   restartFocus: () => void;
+  togglePageContent: () => void;
 };

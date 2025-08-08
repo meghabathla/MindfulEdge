@@ -3,28 +3,20 @@ import { IoAddCircleOutline } from "react-icons/io5";
 import { ImHome } from "react-icons/im";
 import { Link } from "./Link/Link";
 import FocusedToday from "./FocusedToday/FocusedToday";
-import { useLocation, useNavigate } from "react-router-dom";
 import { WeatherWidget } from "./Weather/WeatherWidget";
+import { useFocusContext } from "../store/FocusContext/FocusContext";
 
 const Header = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
+  const { isOnFocusPage, togglePageContent } = useFocusContext();
 
   const renderNavigationIcon = () => {
-    const isFocusPage = location.pathname.includes("/focus");
-
-    const handleOnNavigate = () => {
-      navigate(isFocusPage ? "/" : "/focus");
-    };
-
-    const NavigationIcon = isFocusPage ? ImHome : FaHeadSideVirus;
-
+    const NavigationIcon = isOnFocusPage ? ImHome : FaHeadSideVirus;
     return (
-      <div className="focus_section" onClick={handleOnNavigate}>
+      <div className="focus_section" onClick={togglePageContent}>
         <div className="icon_container">
           <NavigationIcon size={20} />
         </div>
-        <div>{isFocusPage ? "Home" : "Focus"}</div>
+        <div>{isOnFocusPage ? "Home" : "Focus"}</div>
       </div>
     );
   };
@@ -37,15 +29,13 @@ const Header = () => {
       </div>
 
       <div className="right_header_content">
-        <div className="add_section ">
+        <div className="add_section">
           <div className="icon_container">
             <IoAddCircleOutline size={20} />
           </div>
           <div>Add</div>
         </div>
-
         <FocusedToday />
-
         <WeatherWidget />
       </div>
     </div>

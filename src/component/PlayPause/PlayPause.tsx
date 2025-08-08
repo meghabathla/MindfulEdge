@@ -6,7 +6,6 @@ import { useFocusContext } from "../../store/FocusContext/FocusContext";
 
 const PlayPause = () => {
   const { isFocusing, startFocus, stopFocus, restartFocus } = useFocusContext();
-  console.log(isFocusing);
 
   return (
     <div className="play_pause_button">

@@ -1,33 +1,13 @@
-import Footer from "./component/Footer";
-import Header from "./component/Header";
-import HomePage from "./pages/HomePage";
-import { Routes, Route } from "react-router";
+import { AppContent } from "./AppContent";
 import { FocusProvider } from "./store/FocusContext/FocusProvider";
 import { GoalProvider } from "./store/GoalContext/GoalProvider";
 import "./styles.css";
-import FocusPage from "./pages/FocusPage";
-import { getDailyListItem } from "./util/common";
-import { backgroundImages } from "./constants/backgroundImages";
 
 function App() {
   return (
     <GoalProvider>
       <FocusProvider>
-        <div
-          className="background_img"
-          style={{
-            backgroundImage: `url(${
-              getDailyListItem(backgroundImages).imageURL
-            })`,
-          }}
-        >
-          <Header />
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/focus" element={<FocusPage />} />
-          </Routes>
-          <Footer />
-        </div>
+        <AppContent />
       </FocusProvider>
     </GoalProvider>
   );
