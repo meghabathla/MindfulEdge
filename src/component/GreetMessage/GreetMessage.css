@@ -1,0 +1,28 @@
+.greet_container {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  padding-bottom: 25px;
+  gap: 5px;
+}
+
+.text {
+  font-size: var(--text-m);
+}
+
+.input_greet {
+  display: block;
+  text-align: center;
+  width: 130px;
+  border: none;
+  background-color: transparent;
+  border-bottom: 2px solid white;
+  color: white;
+  font-size: var(--text-s);
+}
+.input_greet:focus {
+  outline-width: 0;
+}
+input::placeholder {
+  color: rgba(233, 231, 231, 0.87);
+}
