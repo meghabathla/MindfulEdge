@@ -39,22 +39,3 @@
 .goal_text {
   font-size: 30px;
 }
-
-.goal_options_btn {
-  opacity: 0;
-  color: transparent;
-  min-width: 22px;
-  border-radius: 50%;
-  min-height: 22px;
-}
-
-.goal_task_container:hover .goal_options_btn {
-  opacity: 1;
-  color: rgb(165, 165, 165);
-  background-color: rgba(255, 255, 255, 0.15);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}

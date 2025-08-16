@@ -52,21 +52,18 @@ export const GoalTask: React.FC = () => {
         </div>
       )}
 
-      <div className="goal_options_btn">
-        {" "}
-        <DropDown
-          list={[
-            {
-              label: "Edit",
-              onClick: startEditing,
-            },
-            {
-              label: "Clear",
-              onClick: deleteGoal,
-            },
-          ]}
-        />
-      </div>
+      <DropDown
+        list={[
+          {
+            label: "Edit",
+            onClick: startEditing,
+          },
+          {
+            label: "Clear",
+            onClick: deleteGoal,
+          },
+        ]}
+      />
     </div>
   );
 };

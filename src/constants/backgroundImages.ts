@@ -15,6 +15,16 @@ import wallpaper14 from "../assets/wallpaper14.jpg";
 import wallpaper15 from "../assets/wallpaper15.jpg";
 import wallpaper16 from "../assets/wallpaper16.jpg";
 import wallpaper17 from "../assets/wallpaper17.jpg";
+import wallpaper18 from "../assets/wallpaper18.jpg";
+import wallpaper19 from "../assets/wallpaper19.jpg";
+import wallpaper20 from "../assets/wallpaper20.jpg";
+import wallpaper21 from "../assets/wallpaper21.jpg";
+import wallpaper22 from "../assets/wallpaper22.jpg";
+import wallpaper23 from "../assets/wallpaper23.jpg";
+import wallpaper24 from "../assets/wallpaper24.jpg";
+import wallpaper25 from "../assets/wallpaper25.jpg";
+import wallpaper26 from "../assets/wallpaper26.jpg";
+import wallpaper27 from "../assets/wallpaper27.jpg";
 
 export const backgroundImages = [
   {
@@ -84,5 +94,45 @@ export const backgroundImages = [
   {
     imageNo: 17,
     imageURL: wallpaper17,
+  },
+  {
+    imageNo: 18,
+    imageURL: wallpaper18,
+  },
+  {
+    imageNo: 19,
+    imageURL: wallpaper19,
+  },
+  {
+    imageNo: 20,
+    imageURL: wallpaper20,
+  },
+  {
+    imageNo: 21,
+    imageURL: wallpaper21,
+  },
+  {
+    imageNo: 22,
+    imageURL: wallpaper22,
+  },
+  {
+    imageNo: 23,
+    imageURL: wallpaper23,
+  },
+  {
+    imageNo: 24,
+    imageURL: wallpaper24,
+  },
+  {
+    imageNo: 25,
+    imageURL: wallpaper25,
+  },
+  {
+    imageNo: 26,
+    imageURL: wallpaper26,
+  },
+  {
+    imageNo: 27,
+    imageURL: wallpaper27,
   },
 ];

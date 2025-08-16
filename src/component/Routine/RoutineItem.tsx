@@ -52,6 +52,12 @@ export const RoutineItem: React.FC<RoutineItemsProps> = ({
       )}
 
       <DropDown
+        iconStyle={{
+          color: "black",
+          backgroundColor: "rgb(125,125,125,0.2)",
+          borderRadius: "50%",
+          padding: "3px",
+        }}
         list={[
           {
             label: "Edit",
