@@ -3,7 +3,7 @@ import { IoAddCircleOutline } from "react-icons/io5";
 import { ImHome } from "react-icons/im";
 import { Link } from "./Link/Link";
 import FocusedToday from "./FocusedToday/FocusedToday";
-// import { WeatherWidget } from "./Weather/WeatherWidget";
+import { WeatherWidget } from "./Weather/WeatherWidget";
 import { useFocusContext } from "../store/FocusContext/FocusContext";
 
 const Header = () => {
@@ -36,7 +36,7 @@ const Header = () => {
           <div>Add</div>
         </div>
         <FocusedToday />
-        {/* <WeatherWidget /> */}
+        <WeatherWidget />
       </div>
     </div>
   );
